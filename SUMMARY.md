@@ -2,7 +2,8 @@ bui# Summary
 
 * [微服务定义](definition/index.md)
 * [参考资料](reference/index.md)
-    * [读书笔记: Martin Fowler的《微服务》](reference/Martin-Fowler/microservices.md)
+    * [学习笔记: Martin Fowler的《微服务》](reference/Martin-Fowler/microservices.md)
+    * [学习笔记: 微服务设计模式](reference/javacodegeeks/microservice-design-patterns.md)
     * [Building Microservices](reference/building-microservices/index.md)
         * [什么是微服务](reference/building-microservices/what-are-microservices.md)
             * [小而专注](reference/building-microservices/small-and-focused.md)

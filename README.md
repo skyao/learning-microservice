@@ -3,13 +3,14 @@
 
 微服务(micro service)架构风格是一种通过一套小型服务来开发单个应用的方法，每个服务运行在自己的进程中，并通过轻量级的机制进行通讯.
 
-在2014年初Martin Fowler首次使用微服务这个词语来描述之后, 微服务迅速被开发社区接受并普及.
+今年来微服务被开发社区接受并快速普及, 尤其在docker等容器技术风行之后更是被认为是"天作之合".
 
 这里的笔记用于记录微服务(micro service)学习过程的各种信息和心得.
 
 # 章节内容
 
-* [读书笔记: Martin Fowler的《微服务》](reference/Martin-Fowler/microservices.md)
+* [学习笔记: Martin Fowler的《微服务》](reference/Martin-Fowler/microservices.md)
+* [学习笔记: 微服务设计模式](reference/javacodegeeks/microservice-design-patterns.md)
 
 内容陆续添加中......
 
