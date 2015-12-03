@@ -1,4 +1,4 @@
-Martin Fowler的《微服务》
+读书笔记: Martin Fowler的《微服务》
 =======================
 
 # 前言
@@ -6,20 +6,200 @@ Martin Fowler的《微服务》
 Martin Fowler的《微服务》是第一篇详细介绍微服务的文章。对微服务进行了定义，并与传统架构进行了对比，阐述了微服务的优势。
 
 - 原文: [microservices](http://martinfowler.com/articles/microservices.html)
-- 中文翻译: [微服务](http://www.jdon.com/46204)
+- 中文翻译: [微服务](http://blog.cuicc.com/blog/2015/07/22/microservices/)
 
-注: 发现上面的翻译工作做的也不是特别好, 在学习的同时顺便润色了一下, 向原翻译同学致敬!
+注1: 上面的中文翻译是目前找到的最好的版本, 语句通顺而准确, 向作者致敬!
 
-# 正文
+注2: 找到的第一个版本的翻译是[微服务中文翻译版本](http://www.jdon.com/46204), 翻译质量很不理想, 非常拗口而且语义也和原文有差异. 看不下去, 我曾决定自己再润色一遍. 但翻译到中途时发现了上面的好版本就放弃了.
 
-"Microservices" - yet another new term on the crowded streets of software architecture. Although our natural inclination is to pass such things by with a contemptuous glance, this bit of terminology describes a style of software systems that we are finding more and more appealing. We've seen many projects use this style in the last few years, and results so far have been positive, so much so that for many of our colleagues this is becoming the default style for building enterprise applications. Sadly, however, there's not much information that outlines what the microservice style is and how to do it.
+注3: 这个好的翻译, 也只是前半段水准不错, 后半段就急剧下滑......
 
-"微服务"，在软件架构这个拥挤的街道上冒出来的又一个新名词。虽然我们本能是轻蔑的瞥了一眼这些事情，但是这个术语描述了一个越来越吸引人的软件系统风格。在过去几年中我们看到很多项目在使用这种风格，而结果都是积极正面的，以至于对于我们许多同事微服务变成了构建企业级应用的默认风格。但遗憾的是，没有太多信息来概述什么是微服务风格和该如何做。
+# 术语表
 
-In short, ++**the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms**++, often an HTTP resource API. These services are built around business capabilities and independently deployable by fully automated deployment machinery. There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies.
+| 术语(English) | 翻译(中文) | 备注  |
+|--------|--------|--------|
+|micro service| 微服务 |        |
+|monolithic| 单块/单体 | 和微服务相对的传统架构模式 |
+|Conway's Law| 康威定律 | 内容一句话: "组织决定架构" |
 
-简单说，++**微服务架构风格是一种通过一套小型服务来开发单个应用的方法，每个服务运行在自己的进程中，并通过轻量级的机制进行通讯**++，经常是基于HTTP资源API，这些服务基于业务能力构建，能够通过自动化部署方式独立部署，这些服务自己有一些小型集中化管理，可以是使用不同的编程语言编写，正如不同的数据存储技术一样。
+# 读书笔记
 
-To start explaining the microservice style it's useful to compare it to the monolithic style: a monolithic application built as a single unit. Enterprise Applications are often built in three main parts: a client-side user interface (consisting of HTML pages and javascript running in a browser on the user's machine) a database (consisting of many tables inserted into a common, and usually relational, database management system), and a server-side application. The server-side application will handle HTTP requests, execute domain logic, retrieve and update data from the database, and select and populate HTML views to be sent to the browser. This server-side application is a monolith - a single logical executable[2]. Any changes to the system involve building and deploying a new version of the server-side application.
+*注: 英文原文和翻译版本请见上面的链接. 以下部分为个人学习笔记.*
 
-为了开始解释微服务，必须比较一下铁板一块式monolithic(整体) 风格，一个铁板一块monolithic的应用作为一个单元构建，企业应用经常基于三个部分构建：一个客户端用户界面(浏览器运行HTML和javascript)，一个数据库和一个服务端应用，服务端应用处理Http请求，执行领域逻辑，加载和更新数据库数据，查询和导出Html视图到浏览器，这个服务端应用是铁板一块monolithic ，只有一个合乎逻辑的可执行文件，这个系统的任何改变都会涉及到重新构建和部署新版本。
+微服务定义:
+
+> **微服务架构风格是一种将一个单一应用程序开发为一组小型服务的方法，每个服务运行在自己的进程中，服务间通信采用轻量级通信机制**(通常用HTTP资源API)。这些服务围绕业务能力构建并且可通过全自动部署机制独立部署。这些服务共用一个最小型的集中式的管理，服务可用不同的语言开发，使用不同的数据存储技术。
+
+和单体服务器的对比:
+
+> 单体服务器是构建这样一个系统最自然的方式。**处理请求的所有逻辑都运行在一个单一进程中**，允许你使用编程语言的基本特性将应用程序划分类、函数和命名空间。你认真的在开发机上运行测试应用程序，并使用部署管道来保证变更已被正确地测试并部署到生产环境中。该单体的水平扩展可以通过在负载均衡器后面运行多个实例来实现。
+
+单体服务器的问题:
+
+＞　变更周期被捆绑在一起 —— **即使只变更应用程序的一部分，也需要重新构建并部署整个单体**。长此以往，通常将很难保持一个良好的模块架构，这使得很难变更只发生在需要变更的模块内。程序扩展要求进行整个应用程序的扩展而不是需要更多资源的应用程序部分的扩展。
+
+![单体和微服务](http://blog.cuicc.com/images/sketch.png)
+
+微服务架构风格：
+
+> 构建应用程序为服务套件。**除了服务是可独立部署、可独立扩展的之外，每个服务都提供一个固定的模块边界**。甚至允许不同的服务用不同的的语言开发，由不同的团队管理。
+
+## 微服务架构的特征 / Characteristics of a Microservice Architecture
+
+### 通过服务组件化 / Componentization via Services
+
+组件的定义:
+
+> 组件是一个可独立替换和独立升级的软件单元。
+
+微服务架构组件化软件的主要方式:
+
+> 分解成服务, 而服务是一种**进程外**的组件，通过web服务请求或rpc机制通信
+
+使用服务作为组件而不是使用库的主要原因:
+
+1. 服务是可独立部署的
+2. 更加明确的组件接口: **服务通过明确的远程调用机制可以避免组件间的紧耦合** **
+
+缺点:
+
+1. 远程调用比进程内调用更昂贵
+2. 导致远程API被设计成粗粒度, 不便于使用
+
+### 围绕业务能力组织 / Organized around Business Capabilities
+
+康威定律(Conway's Law):
+
+> 任何设计系统(广泛定义的)的组织将产生一种设计，他的结构就是该住址的通信结构。
+> -- Melvyn Conway 1967
+
+简单一句话就是: "组织决定架构"!
+
+![Conway法则在起作用](http://blog.cuicc.com/images/conways-law.png)
+
+微服务的组织方式:
+
+> 微服务采用不同的分割方法，划分成围绕业务能力组织的服务。这些服务采取该业务领域软件的宽栈实现，包括用户接口、持久化存储和任何外部协作。因此，**团队都是跨职能的**，包括开发需要的全方位技能：用户体验、数据库、项目管理。
+
+![团队边界增强的服务边界](http://blog.cuicc.com/images/PreferFunctionalStaffOrganization.png)
+
+建议:
+
+> 敦促创建单体应用程序的大型团队将团队本身按业务线拆分
+
+### 是产品不是项目 / Products not Projects
+
+项目模式：
+
+> 目标是交付将要完成的一些软件。完成后的软件被交接给维护组织，然后它的构建团队就解散了。
+
+**微服务支持者倾向于避免这种模式**，而是认为一个团队应该负责产品的整个生命周期。
+
+产品模式:
+
+> 产品思想与业务能力紧紧联系在一起。要持续关注软件如何帮助用户提升业务能力，而**不是把软件看成是将要完成的一组功能**。
+
+微服务相对单体应用的优势:
+
+> 同样的方法也可以用在单体应用程序上，但服务的粒度更小，使得它**更容易在服务开发者和用户之间建立个人关系**。
+
+### 智能端点和哑管道 / Smart endpoints and dumb pipes
+
+在不同进程间创建通信结构时, 智能放在哪里, 有两种不同思路:
+
+1. 把显著的智慧强压进通信机制本身
+
+	一个很好的例子就是企业服务总线(ESB)，在ESB产品中通常为消息路由、编排(choreography)、转化和应用业务规则引入先进的设施.
+
+2. 智能端点和哑管道
+
+	微服务社区主张另一种方法, 基于微服务构建的应用程序的目标是**尽可能的解耦和尽可能的内聚** - 他们拥有自己的领域逻辑，他们的行为更像经典UNIX理念中的过滤器 - 接收请求，应用适当的逻辑并产生响应。
+
+    使用简单的REST风格的协议来编排，而不是使用像WS-Choreography或者BPEL或者通过中心工具编制(orchestration)等复杂的协议。
+
+最常用的两种协议:
+
+1. 使用rest API的HTTP请求-响应和轻量级消息传送
+2. 在轻量级消息总线上传递消息
+
+把单体变成微服务:
+
+**最大的问题在于通信模式的改变**。一种幼稚的转换是从内存方法调用转变成RPC，这导致频繁通信且性能不好。相反，你需要**用粗粒度通信代替细粒度通信**。
+
+### 去中心化治理 / Decentralized Governance
+
+集中治理的一个后果是技术平台的单一标准化发展趋势。不是每个问题都是钉子，不是每个问题都是锤子。我们更喜欢**使用正确的工具来完成工作**.
+
+把单体的组件分裂成服务，在构建这些服务时可以有自己的选择。
+
+去中心化治理的最高境界就是亚马逊广为流传的build it/run it理念: **团队要对他们构建的软件的各方面负责，包括7*24小时的运营**.
+
+### 去中心化数据管理 / Decentralized Data Management
+
+DDD把一个复杂域划分成多个有界的上下文，并且映射出它们之间的关系。这个过程对单体架构和微服务架构都是有用的，但在**服务和上下文边界间有天然的相关性**，边界有助于澄清和加强分离，就像业务能力部分描述的那样。
+
+微服务更倾向于让每个服务管理自己的数据库，或者同一数据库技术的不同实例，或完全不同的数据库系统.
+
+![去中心化决策](http://blog.cuicc.com/images/decentralised-data.png)
+
+分布式事务:
+
+> 微服务架构强调服务间的无事务协作，关注最终一致性和事后补偿。
+
+权衡
+
+> 修复错误的代价是否小于一致性下业务损失的代价?
+
+### 基础设施自动化 / Infrastructure Automation
+
+基于持续部署(和它的前身持续集成), 构建管线图:
+
+![基础构建管道](http://blog.cuicc.com/images/basic-pipeline.png)
+
+关键特性:
+
+1. 自动化测试
+2. 自动化部署
+3. 在生产环境中管理微服务
+
+![模块部署常常不同](http://blog.cuicc.com/images/micro-deployment.png)
+
+### 为失效设计 / Design for Failure
+
+使用服务作为组件的一个后果:
+
+> 应用程序需要被设计成**能够容忍服务失效**。任何服务调用都可能因为服务提供者不可用而失败，客户端必须尽可能优雅的应对这种失败。
+
+与单体应用设计相比这是一个劣势，因为它**引入额外的复杂度**。
+
+为因对随时可能失败的服务, 微服务:
+
+1. 快速检测故障
+2. 自动恢复服务
+3. 应用程序的实时监测: 包括性能指标(如TPS)和业务指标(如订单数)
+4. 告警系统: 通知开发团队跟进和调查
+
+微服务希望看到为每个单独的服务设置的完善的监控和日志记录:
+
+1. 控制面板上显示启动/关闭状态
+2. 各种各样的运营和业务相关指标
+3. 断路器状态
+4. 当前吞吐量和时延
+
+### 进化式设计 / Evolutionary Design
+
+分割应用的原则: **组件可独立的更换和升级**
+
+微服务强调可替代性, 通过变更模式来驱动模块化: **同时变化的东西保持在同一模块中**。系统中很少变更的部分应该和正在经历大量扰动的部分放在不同的服务里。如果你发现你自己不断地一起改变两个服务，这是它们应该被合并的一个标志。
+
+### 微服务是未来吗？ / Are Microservices the Future?
+
+Martin-Fowler 在2014年出写下这个文章时, 还是"怀着谨慎乐观的态度". 而这之后的一年半的时间, 业界对微服务的接受程度远远超过当时的预期, 几乎可是说是推崇甚至有成为业界标杆的趋势.
+
+# 个人感言
+
+去年这篇文章出来不久, 就认真拜读过一遍(当时还只有英文版), 收益颇多.
+
+一年半之后, 细细重温这篇老文, 还是收益颇多, 有些当时还不是太懂的地方, 现在理解的深刻多了, 比如说"康威定律".
+
+计划一两年之后再回来重读一遍, 很期待届时会有什么想法和感触.
