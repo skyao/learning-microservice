@@ -9,8 +9,8 @@
 
 # 章节内容
 
-* [学习笔记: Martin Fowler的《微服务》](reference/Martin-Fowler/microservices.md)
-* [学习笔记: 微服务设计模式](reference/javacodegeeks/microservice-design-patterns.md)
+* [学习笔记: Martin Fowler的《微服务》](notes/Martin-Fowler/microservices.md)
+* [学习笔记: 微服务设计模式](notes/javacodegeeks/microservice-design-patterns.md)
 
 内容陆续添加中......
 

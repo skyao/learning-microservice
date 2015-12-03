@@ -7,12 +7,13 @@ Martin Fowler的《微服务》是第一篇详细介绍微服务的文章。对�
 
 - 原文: [microservices](http://martinfowler.com/articles/microservices.html)
 - 中文翻译: [微服务](http://blog.cuicc.com/blog/2015/07/22/microservices/)
+- [演说视频@GOTO Berlin 2014](https://www.youtube.com/watch?v=wgdBVIX9ifA)
 
 注1: 上面的中文翻译是目前找到的最好的版本, 语句通顺而准确, 向作者致敬!
 
 注2: 找到的第一个版本的翻译是[微服务中文翻译版本](http://www.jdon.com/46204), 翻译质量很不理想, 非常拗口而且语义也和原文有差异. 看不下去, 我曾决定自己再润色一遍. 但翻译到中途时发现了上面的好版本就放弃了.
 
-注3: 这个好的翻译, 也只是前半段水准不错, 后半段就急剧下滑......
+注3: 这个所谓好的翻译, 也只是前半段水准不错, 后半段就急剧下滑, 看不下去......
 
 # 术语表
 
