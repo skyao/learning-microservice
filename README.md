@@ -1,6 +1,8 @@
 微服务学习笔记
 ===========
 
+注: 如果你看到的是github的源代码,请点击[这里](http://skyao.github.io/leaning-micro-service/) 查看html内容.
+
 微服务(micro service)架构风格是一种通过一套小型服务来开发单个应用的方法，每个服务运行在自己的进程中，并通过轻量级的机制进行通讯.
 
 今年来微服务被开发社区接受并快速普及, 尤其在docker等容器技术风行之后更是被认为是"天作之合".
@@ -14,4 +16,3 @@
 
 内容陆续添加中......
 
-注: 如果你看到的是github的源代码,请点击[这里](http://skyao.github.io/leaning-micro-service/) 查看html内容.
