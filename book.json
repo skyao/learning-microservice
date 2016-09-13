@@ -1,36 +1,27 @@
 {
-    "author": "Sky Ao <aoxiaojian@gmail.com>",
-    "description": "This is a book about the records in leaning micro service.",
-    "extension": null,
-    "generator": "site",
-    "isbn": null,
-    "links": {
-        "sharing": {
-            "all": null,
-            "facebook": null,
-            "google": null,
-            "twitter": null,
-            "weibo": null
-        },
-        "sidebar": {
-            "Sky's Blog": "http://skyao.github.io/"
-        }
+  "author": "Sky Ao <aoxiaojian@gmail.cn>",
+  "description": "微服务学习笔记, 记录微服务的学习过程",
+  "extension": null,
+  "generator": "site",
+  "sidebar": {
+    "Sky@gitbook": "https://skyao.gitbooks.io"
+  },
+  "output": null,
+  "pdf": {
+    "fontSize": 12,
+    "footerTemplate": null,
+    "headerTemplate": null,
+    "margin": {
+      "bottom": 36,
+      "left": 62,
+      "right": 62,
+      "top": 36
     },
-    "output": null,
-    "pdf": {
-        "fontSize": 12,
-        "footerTemplate": null,
-        "headerTemplate": null,
-        "margin": {
-            "bottom": 36,
-            "left": 62,
-            "right": 62,
-            "top": 36
-        },
-        "pageNumbers": false,
-        "paperSize": "a4"
-    },
-    "plugins": ["plantuml"],
-    "title": "Leaning Micro Service/微服务学习笔记",
-    "variables": {}
+    "pageNumbers": false,
+    "paperSize": "a4"
+  },
+  "plugins": [],
+  "title": "微服务学习笔记",
+  "variables": {
+  }
 }
