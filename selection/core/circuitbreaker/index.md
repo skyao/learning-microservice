@@ -16,3 +16,8 @@
 
 ![](images/process.png)
 
+## 参考资料
+
+- [CircuitBreaker (by Martin Fowler)](http://martinfowler.com/bliki/CircuitBreaker.html)
+- [Circuit Breaker Pattern](https://msdn.microsoft.com/en-us/library/dn589784.aspx)
+- [断路器模式](http://wiki.jikexueyuan.com/project/cloud-design-patterns/circuit-breaker-model.html): ircuit Breaker Pattern 一文的中文翻译版本

@@ -46,3 +46,7 @@
 
 - Netflix Ribbon
 
+
+## 参考资料
+
+- [基于队列的负载均衡模式](http://wiki.jikexueyuan.com/project/cloud-design-patterns/load-balance-model-based.html)

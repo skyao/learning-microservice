@@ -19,6 +19,8 @@
 			* [Netflix Ribbon](selection/core/loadbalancer/ribbon.md)
 		* [熔断器](selection/core/circuitbreaker/index.md)
 			* [Netflix Hystrix](selection/core/circuitbreaker/hystrix.md)
+		* [网关](selection/core/gateway/index.md)
+			* [Netflix Zuul](selection/core/gateway/netflix_zuul.md)
 	* [基础设施](selection/infrastructure/index.md)
 		* [Cisco Mantl](selection/infrastructure/mantl.md)
 		* [Vamp](selection/infrastructure/vamp.md)
