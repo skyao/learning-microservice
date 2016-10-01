@@ -12,29 +12,26 @@
 
 1. REST
 2. RPC
-3. 自己定制
+3. 定制
 
-后面我们详细介绍这三种方式的做法和可选的常见实现方案。
+后面我们详细介绍前两种方式的做法和可选的常见实现方案。
+
+第三中定制方式，简单说就是自己按照需要选择不同的类库：
+
+1. 网络通讯，可以选择 netty/mina等
+2. 协议可以选择 HTTP/HTTP2/TCP/UDP 等
+3. 编解码方案 可以选择 Rest/protocol buffer/thrift 等
+
+然后以上三种情况可以有多种排列组合，最后的结果可以是五花八门，就不一一列举了。
 
 ## 网络通讯类库
 
-在涉及网络通讯时，必然会有选择网络通讯类库的问题，目前Java的NIO类库的选择很多，比较推荐的是下面几个。
+在涉及网络通讯时，必然会有选择网络通讯类库的问题，目前主要是各种 NIO 类库。
 
-#### Netty
+在介绍具体的访问方式之前，先过一下 NIO 类库，后面的各种访问方式都有可能使用到这些 NIO 类库。
 
-- http://netty.io/
 
-Netty是由JBOSS提供的一个java开源框架。Netty提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。
 
-是目前最流行的 NIO 方案，最新版本 4.1, 主要提供了对 HTTP 2.0 的支持。
 
-特别提醒： **Netty 5.* 已经被废弃！**
 
-- 具体的说明请见：https://github.com/netty/netty/issues/4466
-- 主要理由是: 使用 ForkJoinPool 的主要改动增加了复杂度但是并没有显示出明确的性能收益。(原文：The major change of using a ForkJoinPool increases complexity and has not
-demonstrated a clear performance benefit.)
-- 因此目前 Netty 官方已经放弃了 netty 5.× 版本的开发和更新，并且推荐已经使用 netty 5.× alpha版本的同学退回到 4.0或者4.1版本
 
-#### Mina
-
-#### 
