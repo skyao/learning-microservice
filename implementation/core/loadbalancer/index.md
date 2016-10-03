@@ -21,9 +21,10 @@
 
 * 软件
 
-	- ngnix
-	- apache
+	- Ngnix
 	- HA Proxy
+	- Apache
+	- LVS
 
 * 硬件
 
@@ -42,11 +43,13 @@
 1. 对客户端不透明的：客户端需要知道服务器端的服务列表，需要自行决定请求要发送的目标地址
 2. 客户端维护负载均衡服务器，控制负载均衡策略和算法
 
-目前常见的实现有:
+目前单独提供的客户端实现比较少，只有:
 
 - Netflix Ribbon
 
+大部分都是在框架内部自行实现。
 
 ## 参考资料
 
+- [负载均衡层设计方案（1）——负载场景和解决方式](http://blog.csdn.net/yinwenjie/article/details/46605451)
 - [基于队列的负载均衡模式](http://wiki.jikexueyuan.com/project/cloud-design-patterns/load-balance-model-based.html)
