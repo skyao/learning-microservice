@@ -1,26 +1,31 @@
 {
+  "gitbook": ">=3.2.0",
+  "description": "微服务学习笔记",
+  "language": "zh-hans",
   "author": "Sky Ao <aoxiaojian@gmail.cn>",
-  "description": "微服务学习笔记, 记录微服务的学习过程",
   "extension": null,
   "generator": "site",
-  "sidebar": {
-    "Sky@gitbook": "https://skyao.gitbooks.io"
+  "links" : {
+    "sidebar" : {
+        "Sky@Gitbook": "https://skyao.gitbooks.io"
+    }
   },
-  "output": null,
-  "pdf": {
-    "fontSize": 12,
-    "footerTemplate": null,
-    "headerTemplate": null,
-    "margin": {
-      "bottom": 36,
-      "left": 62,
-      "right": 62,
-      "top": 36
+  "structure" : {
+        "readme" : "README_gitbook.md"
     },
-    "pageNumbers": false,
-    "paperSize": "a4"
+  "plugins": [
+    "toggle-chapters",
+    "edit-link", 
+    "etoc",
+    "back-to-top-button",
+    "tags"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+        "base": "https://github.com/skyao/leaning-microservice/edit/master",
+        "label": "Edit"
+    }
   },
-  "plugins": [],
   "title": "微服务学习笔记",
   "variables": {
   }
