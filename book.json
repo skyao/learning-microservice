@@ -2,29 +2,31 @@
   "gitbook": ">=3.2.0",
   "description": "微服务学习笔记",
   "language": "zh-hans",
-  "author": "Sky Ao <aoxiaojian@gmail.cn>",
+  "author": "敖小剑",
   "extension": null,
   "generator": "site",
   "links" : {
     "sidebar" : {
-        "Sky@Gitbook": "https://skyao.gitbooks.io"
+        "敖小剑的博客": "https://skyao.io"
     }
   },
   "structure" : {
-        "readme" : "README_gitbook.md"
     },
   "plugins": [
-    "toggle-chapters",
-    "edit-link", 
-    "etoc",
-    "back-to-top-button",
-    "tags"
+    "splitter",
+    "-search",
+    "-sharing",
+    "edit-link",
+	"devops"
   ],
   "pluginsConfig": {
     "edit-link": {
-        "base": "https://github.com/skyao/learning-microservice/edit/master",
+        "base": "https://github.com/skyao/learning-grpc/edit/master",
         "label": "Edit"
-    }
+    },
+	"devops":{
+		"bd_token": "c7442f5794ea2abb71c6ff05dc0b8779"
+	}
   },
   "title": "微服务学习笔记",
   "variables": {
