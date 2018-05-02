@@ -15,10 +15,10 @@
 
 本文内容可以任意转载，但是需要注明来源并提供链接。
 
-[gitbook]: https://skyao.gitbooks.io/learning-microservie/
-[qcloud]: http://skyao.io/learning-microservie/
-[pdf]: https://www.gitbook.com/download/pdf/book/skyao/learning-microservie
-[mobi]: https://www.gitbook.com/download/mobi/book/skyao/learning-microservie
-[epub]: https://www.gitbook.com/download/epub/book/skyao/learning-microservie
+[gitbook]: https://skyao.gitbooks.io/learning-microservice/
+[qcloud]: http://skyao.io/learning-microservice/
+[pdf]: https://www.gitbook.com/download/pdf/book/skyao/learning-microservice
+[mobi]: https://www.gitbook.com/download/mobi/book/skyao/learning-microservice
+[epub]: https://www.gitbook.com/download/epub/book/skyao/learning-microservice
 
 
