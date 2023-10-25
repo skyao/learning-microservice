@@ -1,6 +1,8 @@
 .*
 !.gitignore
-_book
+public/
+resources/
+node_modules/
 node_modules
-npm-debug.log
-
+themes/
+init_docsy.sh
